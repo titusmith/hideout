@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hideout® — Work</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <a href="work.html" class="logo">
+      <img src="images/hideoutlogo.svg" alt="The Hideout®" class="logo-img">
+    </a>
+    <p class="tagline">The Design Practice of Titus Smith</p>
+    <nav class="nav">
+      <a href="info.html">Info</a>
+      <a href="work.html">Work</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="blurbs">
+      <p class="blurb">The Hideout® is a large man in a tiny office building brands with his friends in the center of the universe, Kansas.</p>
+      <p class="blurb">The Hideout® once accepted 12 bars of soap as payment for a logo (ie: we're pretty affordable).</p>
+      <p class="blurb">The Hideout® is a guy with late-diagnosed ADHD, which he pretends is a super power like flight or invisibility. Do you read comics? I'm really into one called Saga.</p>
+      <p class="blurb">The Hideout® has a huge network of talented designers, so if it doesn't work out between us, you'll still have some pretty solid leads.</p>
+      <p class="blurb">The Hideout® is an office in the middle of a hayfield where our founder, Titus, learned to drive stick.</p>
+      <p class="blurb">The Hideout® is open year-round, but does most of its work in the summer months when owner, Titus, isn't teaching design at Kansas University.</p>
+      <p class="blurb">The Hideout®'s name is a registered trademark. It is not for sale. Unless you have a lot of money. In which case, let's talk.</p>
+      <p class="blurb">The Hideout® was founded by a self-taught designer who barely graduated college with a Bachelors in History.</p>
+      <p class="blurb">The Hideout® website was built entirely from scratch using Figma and Webflow.</p>
+      <p class="blurb">The Hideout® becomes a fan of its clients before agreeing to work with them. Working with us is also an endorsement.</p>
+    </section>
+
+    <div class="grid" id="work-grid"></div>
+  </main>
+
+  <footer class="footer">
+    <p class="friends-note">This page includes work from friends of The Hideout® — Dalton Satterfield, Stephen Griffin, Ben Sterne, Nathan Holthus and the design crew at TinyWins, to name a few. Each are worth a quick Google. Iron sharpens iron.</p>
+    <div class="social-links">
+      <a href="https://twitter.com/titusmith" aria-label="Twitter">Twitter</a>
+      <a href="https://www.instagram.com/titusmith/" aria-label="Instagram">Instagram</a>
+      <a href="https://open.spotify.com/user/titusmith?si=760db55c629b4c90" aria-label="Spotify">Spotify</a>
+      <a href="https://www.notion.so/thehideout/2c73b97fd4104148a9ed58f684018c5b?v=39b5c95a32b84f1aac4335f94d0d21bf&pvs=4" aria-label="Notion">Notion</a>
+    </div>
+    <p class="copyright">Copyright © 2025 The Hideout Design Co</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    fetch('work.json')
+      .then(r => r.json())
+      .then(items => {
+        const grid = document.getElementById('work-grid');
+        items.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'grid-item';
+          const img = document.createElement('img');
+          img.src = item.image;
+          img.alt = item.title;
+          img.loading = 'lazy';
+          div.appendChild(img);
+          grid.appendChild(div);
+        });
+      })
+      .catch(err => console.error('Failed to load work:', err));
+  </script>
+</body>
+</html>
